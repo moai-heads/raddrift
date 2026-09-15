@@ -1,7 +1,0 @@
-# build artifacts / scratch (sources only live in git)
-*.wasm
-main.wasm
-*.ppm
-*.png
-*.tmp
-.DS_Store
