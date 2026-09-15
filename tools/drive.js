@@ -4,6 +4,7 @@ const path = require("path");
 const http = require("http");
 
 const SITE = __dirname + "/../web";
+const REMOTE = process.env.RD_URL || null;
 const PORT = 8124, DBG = 9333;
 const MIME = {".html":"text/html",".js":"text/javascript",".wasm":"application/wasm",".png":"image/png"};
 
@@ -35,7 +36,7 @@ const get = p => new Promise((res,rej)=>http.get({host:"127.0.0.1",port:DBG,path
     if(o.method==="Log.entryAdded")logs.push(o.params.entry.level+": "+o.params.entry.text);};
   await new Promise(r=>ws.onopen=r);
   await send("Runtime.enable"); await send("Log.enable"); await send("Page.enable");
-  await send("Page.navigate",{url:`http://127.0.0.1:${PORT}/index.html`});
+  await send("Page.navigate",{url: REMOTE || `http://127.0.0.1:${PORT}/index.html`});
   await new Promise(r=>setTimeout(r,3000));
   const shot=async n=>{
     const r = await ev("JSON.stringify(document.getElementById('c').getBoundingClientRect())");

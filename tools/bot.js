@@ -1,6 +1,6 @@
 // Kiting bot: flee enemy centroid, hoover shards. Measures natural survival time.
 const fs=require("fs");
-const mod=new WebAssembly.Module(fs.readFileSync(__dirname + "/../main.wasm"));
+const mod=new WebAssembly.Module(fs.readFileSync(__dirname + "/../web/raddrift.wasm"));
 function run(seed, maxSec, smart){
   const X=new WebAssembly.Instance(mod,{}).exports;
   X.init(seed);

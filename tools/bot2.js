@@ -1,6 +1,6 @@
 // Competent bot: local threat-field avoidance incl. enemy bullets, shard magnet, card picks.
 const fs=require("fs");
-const mod=new WebAssembly.Module(fs.readFileSync(__dirname + "/../main.wasm"));
+const mod=new WebAssembly.Module(fs.readFileSync(__dirname + "/../web/raddrift.wasm"));
 function run(seed,maxSec,verbose){
   const X=new WebAssembly.Instance(mod,{}).exports;
   X.init(seed); X.key(32,1);X.key(32,0);

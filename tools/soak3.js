@@ -1,5 +1,5 @@
 const fs=require("fs");
-const X=new WebAssembly.Instance(new WebAssembly.Module(fs.readFileSync(__dirname + "/../main.wasm")),{}).exports;
+const X=new WebAssembly.Instance(new WebAssembly.Module(fs.readFileSync(__dirname + "/../web/raddrift.wasm")),{}).exports;
 X.init(7);
 let prev=X.dbg_state();
 const K=[87,65,83,68];

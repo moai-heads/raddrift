@@ -1,6 +1,6 @@
 // Long-run soak: random-ish input, forced levels/waves, watch for traps.
 const fs=require("fs");
-const mod=new WebAssembly.Module(fs.readFileSync(__dirname + "/../main.wasm"));
+const mod=new WebAssembly.Module(fs.readFileSync(__dirname + "/../web/raddrift.wasm"));
 const X=new WebAssembly.Instance(mod,{}).exports;
 X.init(4242);
 X.key(32,1);X.key(32,0); // start
